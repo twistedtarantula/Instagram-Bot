@@ -3,11 +3,15 @@ from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.chrome.options import Options
 import getpass
+import eel
 
-def instaBot():
-    uname = str(input("Username: "))
-    pwd = getpass.getpass("Password: ")
-    tag = str(input("Which hashtag do you want to try today: "))
+eel.init('web')
+
+@eel.expose
+def instaBot(uname, pwd, tag):
+    #uname = str(input("Username: "))
+    #pwd = getpass.getpass("Password: ")
+    #tag = str(input("Which hashtag do you want to try today: "))
     options = Options()
     options.add_argument('user-data-dir=C:\\Users\\Admin\\AppData\\Local\\Google\\Chrome\\User Data')
     driver = webdriver.Chrome(options=options)
@@ -43,13 +47,15 @@ def instaBot():
         except Exception as e:
             time.sleep(2)
 
-if __name__ == '__main__':
-    while True:
-        query = str(input("What do you want to do? "))
-        query = query.lower()
-        
-        if "instagram" in query:
-            instaBot()
-        
-        elif "exit" in query:
-            exit()
+#eel.start('index.html', size=(1000, 600))
+eel.start('index.html')
+#if __name__ == '__main__':
+#    while True:
+#        query = str(input("What do you want to do? "))
+#        query = query.lower()
+#        
+#        if "instagram" in query:
+#            instaBot()
+#        
+#        elif "exit" in query:
+#            exit()
